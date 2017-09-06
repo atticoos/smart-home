@@ -5,8 +5,9 @@ import Logger from 'log4js';
 // import {wemo} from './wemo';
 import Promise from 'bluebird';
 import * as Wemo from './wemo';
-// var w = new Wemo()
+import * as Hue from './hue';
 
+Hue.discover();
 Wemo.discover();
 
 const app = express();
@@ -17,6 +18,16 @@ app.use(Logger.connectLogger(Logger.getLogger('request'), {
   format: ':remote-addr - :response-timems - ":method :url HTTP/:http-version" :status :content-length ' +
   '":referrer" ":user-agent"'
 }));
+
+app.post('/lights/:name/on', (req, resp) => {
+  Hue.turnOn(req.params.name);
+  resp.json({});
+});
+
+app.post('/lights/:name/off', (req, resp) => {
+  Hue.turnOff(req.params.name);
+  resp.json({});
+});
 
 app.post('/outlets/:name/on', (req, resp) => {
   Wemo.turnOn(req.params.name)

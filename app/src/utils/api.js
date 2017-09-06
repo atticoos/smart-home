@@ -29,3 +29,11 @@ export function turnOutletsOn (name) {
 export function turnOutletsOff (name) {
   return POST(`${BASE_URL}/outlets/${name}/off`)
 }
+
+export function turnLightsOn (name) {
+  return POST(`${BASE_URL}/lights/${name}/on`)
+}
+
+export function turnLightsOff (name) {
+  return POST(`${BASE_URL}/lights/${name}/off`)
+}

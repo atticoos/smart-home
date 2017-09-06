@@ -12,6 +12,10 @@ export default class ControlsScreen extends React.Component {
     stringLights: {
       loading: false,
       powered: false
+    },
+    hue: {
+      loading: false,
+      powered: false
     }
   };
 
@@ -77,6 +81,17 @@ export default class ControlsScreen extends React.Component {
     }, true);
   }
 
+  toggleHue() {
+    if (this.state.hue.powered) {
+      API.turnLightsOff('Kitchen')
+      API.turnLightsOff('Living Room')
+    } else {
+      API.turnLightsOn('Kitchen')
+      API.turnLightsOn('Living Room')
+    }
+    this.setState({hue: {...this.state.hue, powered: !this.state.hue.powered}});
+  }
+
   render() {
     return (
       <Container>
@@ -100,6 +115,12 @@ export default class ControlsScreen extends React.Component {
           loading={this.state.standingLights.loading}
         >
           {this.state.standingLights.powered ? 'Standing Lights On' : 'Standing Lights off'}
+        </LoadingButton>
+        <LoadingButton
+          onPress={this.toggleHue.bind(this)}
+          width={300}
+        >
+          Toggle Hue
         </LoadingButton>
       </Container>
     );
