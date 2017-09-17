@@ -1,6 +1,6 @@
 import Hue from 'node-hue-api';
 
-const userId = 'UAWuNedODAfv9p5w3BwBzJx4etC2K5lcgO9RZs2K';
+const userId = process.env.HUE_USER_ID;
 var bridgeAPI = null;
 
 const Groups = {};

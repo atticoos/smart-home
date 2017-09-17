@@ -59,4 +59,4 @@ app.get('/outlets/:name', (req, resp) => {
     .catch(e => resp.status(500).json(e));
 });
 
-app.listen(4111);
+app.listen(process.env.SMART_HOME_PORT || 4111);
