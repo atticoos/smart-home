@@ -15,7 +15,10 @@ function POST (path, options = {}) {
   return fetch(path, options).then(resp => {
     console.log('resp', resp)
     return resp.json()
-  });
+  }).catch(e => {
+    console.warn('failed with', e)
+    throw e
+  })
 }
 
 const BASE_URL = 'http://apartment:43975';
