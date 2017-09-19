@@ -62,5 +62,6 @@ function createLightReducer (lightType) {
 
 export default combineReducers({
   [LightType.KITCHEN]: createLightReducer(LightType.KITCHEN),
-  [LightType.LIVING_ROOM]: createLightReducer(LightType.LIVING_ROOM)
+  [LightType.LIVING_ROOM]: createLightReducer(LightType.LIVING_ROOM),
+  [LightType.BEDROOM]: createLightReducer(LightType.BEDROOM)
 });

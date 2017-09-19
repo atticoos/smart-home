@@ -12,3 +12,8 @@ export const LivingRoomLightsWidget = compose(
   withProps({title: 'Living Room Lights'}),
   createHueWidget(LightType.LIVING_ROOM)
 )(HueWidget);
+
+export const BedroomLightsWidget = compose(
+  withProps({title: 'Bedroom Lights'}),
+  createHueWidget(LightType.BEDROOM)
+)(HueWidget);

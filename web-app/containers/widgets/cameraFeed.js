@@ -20,7 +20,7 @@ const CameraFeedWidget = ({loading, onLoad}) => {
   <Widget
     title="Camera Feed"
     loading={loading}
-    bodyStyle={{minWidth: 600, minHeight: 400}}
+    bodyStyle={{minWidth: 600, minHeight: 400, padding: 0}}
   >
     <img
       src="http://apartment:43973"

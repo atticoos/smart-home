@@ -11,7 +11,8 @@ import {
 } from '../modules/outlets'
 import {
   KitchenLightsWidget,
-  LivingRoomLightsWidget
+  LivingRoomLightsWidget,
+  BedroomLightsWidget
 } from '../modules/hue'
 import CameraFeedWidget from '../containers/widgets/cameraFeed';
 
@@ -35,6 +36,7 @@ const Screen = (props) => (
     <div style={{display: 'flex', flexDirection: 'row'}}>
       <KitchenLightsWidget />
       <LivingRoomLightsWidget />
+      <BedroomLightsWidget />
     </div>
 
     <div style={{display: 'flex', flexDirection: 'row'}}>
