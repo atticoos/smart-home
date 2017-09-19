@@ -1,13 +1,27 @@
 import 'antd/dist/antd.css'
-import Link from 'next/link'
 import Head from '../components/head'
+import withRedux from 'next-redux-wrapper';
+import {initStore} from '../state/store';
 import * as Api from '../utils/api';
 import {Widget} from '../components/widgets';
 import Button from 'antd/lib/button';
-import StringLightsWidget from '../containers/widgets/stringLights';
-import StandingLightsWidget from '../containers/widgets/standingLights';
+import {
+  StringLightsWidget,
+  StandingLightsWidget
+} from '../modules/outlets'
+// import StringLightsWidget from '../containers/widgets/stringLights';
+// import StandingLightsWidget from '../containers/widgets/standingLights';
 import CameraFeedWidget from '../containers/widgets/cameraFeed';
-export default () => (
+
+class SmartHomeScreen extends React.Component {
+  render() {
+    return (
+      <Screen />
+    )
+  }
+}
+
+const Screen = (props) => (
   <div>
     <Head title="Home" />
 
@@ -21,3 +35,5 @@ export default () => (
     </div>
   </div>
 )
+
+export default withRedux(initStore)(SmartHomeScreen);

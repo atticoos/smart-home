@@ -1,23 +1,16 @@
-import 'whatwg-fetch'
+import 'isomorphic-unfetch'
 
 function GET (path, options = {}) {
-  console.log(path)
   options.method = 'GET';
   return fetch(path, options).then(resp => {
-    console.log('RES', resp)
     return resp.json()
   });
 }
 
 function POST (path, options = {}) {
-  console.log(path)
   options.method = 'POST';
   return fetch(path, options).then(resp => {
-    console.log('resp', resp)
     return resp.json()
-  }).catch(e => {
-    console.warn('failed with', e)
-    throw e
   })
 }
 
