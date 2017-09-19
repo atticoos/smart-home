@@ -36,6 +36,20 @@ export function turnOff (group) {
   bridgeAPI.setGroupLightState(Groups[group].id, Hue.lightState.create().off());
 }
 
+const lightStateFields = ['on', 'bri', 'hue', 'sat'];
+
+export function setGroupState (group, state) {
+  var lightState = Hue.lightState.create();
+
+  lightStateFields.forEach(field => {
+    if (field in state) {
+      lightState[field].call(lightState, state[field])
+    }
+  });
+
+  return bridgeAPI.setGroupLightState(Groups[group].id, lightState);
+}
+
 export function getGroup (group) {
   return bridgeAPI.getGroup(Groups[group].id)
 }
