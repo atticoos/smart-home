@@ -40,6 +40,10 @@ export function getGroup (group) {
   return bridgeAPI.getGroup(Groups[group])
 }
 
+export function getGroups () {
+  return bridgeAPI.getGroups()
+}
+
 export function turnAllOn () {
   Object.keys(Groups).forEach(turnOn)
 }

@@ -40,6 +40,12 @@ app.get('/lights/:name', (req, resp) => {
     .catch(e => resp.status(500).json(e))
 });
 
+app.get('/lights', (req, resp) => {
+  Hue.getGroups()
+    .then(groups => resp.json(groups))
+    .catch(e => resp.status(500).json(e))
+})
+
 app.post('/outlets/:name/on', (req, resp) => {
   Wemo.turnOn(req.params.name)
     .then(() => resp.json({}))
