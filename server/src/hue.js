@@ -16,11 +16,13 @@ export function discover() {
             Groups[group.name] = group;
           }
         });
+        console.log('discovered hue groups', Object.keys(Groups))
       });
       bridgeAPI.lights().then(lights => {
         lights.lights.forEach(light => {
           Lights[light.id] = light;
         })
+        console.log('discovered hue lights', Object.keys(Lights))
       });
     }
   })
