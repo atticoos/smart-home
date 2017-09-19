@@ -1,6 +1,7 @@
 import React from 'react'
 import * as Api from '../../utils/api';
-import {Widget} from '../../components/widgets';
+import {Widget, WidgetTitle} from '../../components/widgets';
+import VideoIcon from 'react-icons/lib/fa/video-camera'
 import Button from 'antd/lib/button';
 import {compose, withStateHandlers} from 'recompose';
 
@@ -18,7 +19,9 @@ const CameraFeedWidget = ({loading, onLoad}) => {
         />
       }
   <Widget
-    title="Camera Feed"
+    title={
+      <WidgetTitle title="Camera Feed" icon={VideoIcon} />
+    }
     loading={loading}
     bodyStyle={{minWidth: 600, minHeight: 400, padding: 0}}
   >

@@ -1,5 +1,6 @@
 import React from 'react'
-import {Widget} from '../../components/widgets'
+import {Widget, WidgetTitle} from '../../components/widgets'
+import BulbIcon from 'react-icons/lib/fa/lightbulb-o'
 import {
   Row,
   Col,
@@ -7,9 +8,12 @@ import {
   Slider
 } from 'antd'
 
-const OutletWidget = ({title, initialized, loading, brightness, setBrightness, poweredOn, powerOn, powerOff}) => {
+const OutletWidget = ({title, icon = BulbIcon, initialized, loading, brightness, setBrightness, poweredOn, powerOn, powerOff}) => {
   return (
-  <Widget title={title} loading={!initialized}>
+  <Widget
+    title={<WidgetTitle title={title} icon={icon} />}
+    loading={!initialized}
+  >
     <Row gutter={10}>
       <Col span={12} style={{display: 'flex'}}>
         <Button

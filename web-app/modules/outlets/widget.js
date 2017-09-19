@@ -1,14 +1,18 @@
 import React from 'react'
-import {Widget} from '../../components/widgets'
+import PlugIcon from 'react-icons/lib/fa/plug'
+import {Widget, WidgetTitle} from '../../components/widgets'
 import {
   Row,
   Col,
   Button
 } from 'antd'
 
-const OutletWidget = ({title, initialized, loading, poweredOn, powerOn, powerOff}) => {
+const OutletWidget = ({title, icon = PlugIcon, initialized, loading, poweredOn, powerOn, powerOff}) => {
   return (
-  <Widget title={title} loading={!initialized}>
+  <Widget
+    title={<WidgetTitle title={title} icon={icon} />}
+    loading={!initialized}
+  >
     <Row gutter={10}>
       <Col span={12} style={{display: 'flex'}}>
         <Button
