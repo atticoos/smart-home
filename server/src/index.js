@@ -1,6 +1,7 @@
 // import Wemo from 'wemo-client';
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import Logger from 'log4js';
 // import {wemo} from './wemo';
 import Promise from 'bluebird';
@@ -12,6 +13,7 @@ Wemo.discover();
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser());
 app.use(Logger.connectLogger(Logger.getLogger('request'), {
   level: 'auto',
