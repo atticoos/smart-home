@@ -1,26 +1,36 @@
 import React from 'react'
 import {Widget} from '../../components/widgets'
-import Button from 'antd/lib/button'
+import {
+  Row,
+  Col,
+  Button
+} from 'antd'
 
 const OutletWidget = ({title, initialized, loading, poweredOn, powerOn, powerOff}) => {
   return (
   <Widget title={title} loading={!initialized}>
-    <Button
-      style={{width: 80, marginRight: 10}}
-      onClick={powerOn}
-      type={poweredOn ? 'primary' : null}
-      loading={!poweredOn && loading}
-    >
-      On
-    </Button>
-    <Button
-      style={{width: 80}}
-      onClick={powerOff}
-      type={!poweredOn ? 'primary' : null}
-      loading={poweredOn && loading}
-    >
-      Off
-    </Button>
+    <Row gutter={10}>
+      <Col span={12} style={{display: 'flex'}}>
+        <Button
+          style={{flex: 1}}
+          onClick={powerOn}
+          type={poweredOn ? 'primary' : null}
+          loading={!poweredOn && loading}
+        >
+          On
+        </Button>
+      </Col>
+      <Col span={12} style={{display: 'flex'}}>
+        <Button
+          style={{flex: 1}}
+          onClick={powerOff}
+          type={!poweredOn ? 'primary' : null}
+          loading={poweredOn && loading}
+        >
+          Off
+        </Button>
+      </Col>
+    </Row>
   </Widget>
 )};
 

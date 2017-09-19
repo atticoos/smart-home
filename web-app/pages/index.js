@@ -4,7 +4,11 @@ import withRedux from 'next-redux-wrapper';
 import {initStore} from '../state/store';
 import * as Api from '../utils/api';
 import {Widget} from '../components/widgets';
-import Button from 'antd/lib/button';
+import {
+  Row,
+  Col,
+  Button
+} from 'antd'
 import {
   StringLightsWidget,
   StandingLightsWidget
@@ -28,20 +32,32 @@ const Screen = (props) => (
   <div>
     <Head title="Home" />
 
-    <div style={{display: 'flex', flexDirection: 'row'}}>
-      <StringLightsWidget />
-      <StandingLightsWidget />
-    </div>
+    <Row>
+      <Col span={6}>
+        <StringLightsWidget />
+      </Col>
+      <Col span={6}>
+        <StandingLightsWidget />
+      </Col>
+    </Row>
 
-    <div style={{display: 'flex', flexDirection: 'row'}}>
-      <KitchenLightsWidget />
-      <LivingRoomLightsWidget />
-      <BedroomLightsWidget />
-    </div>
+    <Row>
+      <Col span={6}>
+        <KitchenLightsWidget />
+      </Col>
+      <Col span={6}>
+        <LivingRoomLightsWidget />
+      </Col>
+      <Col span={6}>
+        <BedroomLightsWidget />
+      </Col>
+    </Row>
 
-    <div style={{display: 'flex', flexDirection: 'row'}}>
-      <CameraFeedWidget />
-    </div>
+    <Row>
+      <Col span={12}>
+        <CameraFeedWidget />
+      </Col>
+    </Row>
   </div>
 )
 
