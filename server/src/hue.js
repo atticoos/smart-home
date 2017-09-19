@@ -36,6 +36,10 @@ export function turnOff (group) {
   bridgeAPI.setGroupLightState(Groups[group].id, Hue.lightState.create().off());
 }
 
+export function getGroup (group) {
+  return bridgeAPI.getGroup(Groups[group])
+}
+
 export function turnAllOn () {
   Object.keys(Groups).forEach(turnOn)
 }
