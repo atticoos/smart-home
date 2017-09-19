@@ -42,7 +42,7 @@ app.get('/lights/:name', (req, resp) => {
 
 app.post('/lights/:name', (req, resp) => {
   Hue.setGroupState(req.params.name, req.body)
-    .then(result => resp.json(result))
+    .then(result => resp.json({result}))
     .catch(e => resp.status(500).json(e))
 })
 
