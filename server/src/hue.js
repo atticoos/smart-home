@@ -37,7 +37,7 @@ export function turnOff (group) {
 }
 
 export function getGroup (group) {
-  return bridgeAPI.getGroup(Groups[group])
+  return bridgeAPI.getGroup(Groups[group].id)
 }
 
 export function getGroups () {
