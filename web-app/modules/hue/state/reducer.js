@@ -6,7 +6,8 @@ import {HueActionTypes} from './actions';
 const initialState = {
   poweredOn: false,
   initializing: true,
-  requestStatus: null
+  requestStatus: null,
+  lightState: null
 };
 
 function createLightReducer (lightType) {
@@ -38,7 +39,17 @@ function createLightReducer (lightType) {
             ...state,
             requestStatus: action.status,
             initializing: state.initializing && action.status === Status.REQUEST,
-            poweredOn: action.status === Status.SUCCESS ? action.response.state : state.poweredOn
+            poweredOn: action.status === Status.SUCCESS ? action.response.lastAction.on : state.poweredOn,
+            lightState: action.status === Status.SUCCESS ? action.response.lastAction : state.lightState
+          };
+        }
+        return state;
+
+      case HueActionTypes.SET_BRIGHTNESS:
+        if (action.light === lightType) {
+          return {
+            ...state,
+            lightState: state.lightState ? {...state.lightState, bri: action.brightness} : null
           };
         }
         return state;

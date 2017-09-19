@@ -7,8 +7,17 @@ function GET (path, options = {}) {
   });
 }
 
-function POST (path, options = {}) {
+function POST (path, body = {}, options = {}) {
   options.method = 'POST';
+  options.headers = {
+    ...options.headers,
+    'Content-Type': 'application/json'
+  }
+
+  if (body) {
+    options.body = JSON.stringify(body);
+  }
+
   return fetch(path, options).then(resp => {
     return resp.json()
   })
@@ -34,4 +43,16 @@ export function turnLightsOn (name) {
 
 export function turnLightsOff (name) {
   return POST(`${BASE_URL}/lights/${name}/off`)
+}
+
+export function setLightState (name, state) {
+  return POST(`${BASE_URL}/lights/${name}`, state)
+}
+
+export function getLightState (name) {
+  return GET(`${BASE_URL}/lights/${name}`)
+}
+
+export function getLightGroups () {
+  return GET(`${BASE_URL}/lights`)
 }

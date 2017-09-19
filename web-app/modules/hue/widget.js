@@ -1,8 +1,11 @@
 import React from 'react'
 import {Widget} from '../../components/widgets'
-import Button from 'antd/lib/button'
+import {
+  Button,
+  Slider
+} from 'antd'
 
-const OutletWidget = ({title, initialized, loading, poweredOn, powerOn, powerOff}) => {
+const OutletWidget = ({title, initialized, loading, brightness, setBrightness, poweredOn, powerOn, powerOff}) => {
   return (
   <Widget title={title} loading={!initialized}>
     <Button
@@ -21,6 +24,15 @@ const OutletWidget = ({title, initialized, loading, poweredOn, powerOn, powerOff
     >
       Off
     </Button>
+
+    <div>
+      <Slider
+        value={brightness}
+        onChange={setBrightness}
+        min={0}
+        max={255}
+      />
+    </div>
   </Widget>
 )};
 

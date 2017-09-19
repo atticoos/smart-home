@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {compose, mapProps} from 'recompose';
 import {createStructuredSelector} from 'reselect';
 import {createOutletSelector} from './state/selector'
-import {powerOn, powerOff, getPower} from './state/actions';
+import {powerOn, powerOff, getPower, setBrightness} from './state/actions';
 
 
 export default function withHueWidgetConnector (lightType) {
@@ -19,10 +19,12 @@ export default function withHueWidgetConnector (lightType) {
           <HueComponent
             title={this.props.title}
             poweredOn={this.props.poweredOn}
+            brightness={this.props.lightState ? this.props.lightState.bri : null}
             initialized={!this.props.initializing}
             loading={this.props.requestStatus === 'request'}
             powerOn={() => this.props.powerOn(lightType)}
             powerOff={() => this.props.powerOff(lightType)}
+            setBrightness={(level) => this.props.setBrightness(lightType, level)}
           />
         )
       }
@@ -33,7 +35,7 @@ export default function withHueWidgetConnector (lightType) {
     })
 
     const actions = dispatch => ({
-      outletActions: bindActionCreators({powerOn, powerOff, getPower}, dispatch)
+      outletActions: bindActionCreators({powerOn, powerOff, getPower, setBrightness}, dispatch)
     })
 
     const enhance = compose(
