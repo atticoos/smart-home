@@ -7,29 +7,29 @@ import {createOutletSelector} from './state/selector'
 import {powerOn, powerOff, getPower} from './state/actions';
 
 
-export default function withWemoWidgetConnector (outletType) {
-  return WemoComponent => {
-    class WemoWidget extends React.Component {
+export default function withHueWidgetConnector (lightType) {
+  return HueComponent => {
+    class HueWidget extends React.Component {
       componentDidMount() {
-        this.props.getPower(outletType);
+        this.props.getPower(lightType);
       }
 
       render() {
         return (
-          <WemoComponent
+          <HueComponent
             title={this.props.title}
             poweredOn={this.props.poweredOn}
             initialized={!this.props.initializing}
             loading={this.props.requestStatus === 'request'}
-            powerOn={() => this.props.powerOn(outletType)}
-            powerOff={() => this.props.powerOff(outletType)}
+            powerOn={() => this.props.powerOn(lightType)}
+            powerOff={() => this.props.powerOff(lightType)}
           />
         )
       }
     }
 
     const selector = createStructuredSelector({
-      outlet: createOutletSelector(outletType)
+      outlet: createOutletSelector(lightType)
     })
 
     const actions = dispatch => ({
@@ -45,6 +45,6 @@ export default function withWemoWidgetConnector (outletType) {
       }))
     );
 
-    return enhance(WemoWidget);
+    return enhance(HueWidget);
   };
 }

@@ -9,8 +9,10 @@ import {
   StringLightsWidget,
   StandingLightsWidget
 } from '../modules/outlets'
-// import StringLightsWidget from '../containers/widgets/stringLights';
-// import StandingLightsWidget from '../containers/widgets/standingLights';
+import {
+  KitchenLightsWidget,
+  LivingRoomLightsWidget
+} from '../modules/hue'
 import CameraFeedWidget from '../containers/widgets/cameraFeed';
 
 class SmartHomeScreen extends React.Component {
@@ -28,6 +30,11 @@ const Screen = (props) => (
     <div style={{display: 'flex', flexDirection: 'row'}}>
       <StringLightsWidget />
       <StandingLightsWidget />
+    </div>
+
+    <div style={{display: 'flex', flexDirection: 'row'}}>
+      <KitchenLightsWidget />
+      <LivingRoomLightsWidget />
     </div>
 
     <div style={{display: 'flex', flexDirection: 'row'}}>
